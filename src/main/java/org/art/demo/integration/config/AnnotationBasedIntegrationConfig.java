@@ -1,6 +1,6 @@
 package org.art.demo.integration.config;
 
-import org.art.demo.integration.transformer.SimpleFilePayloadTransformer;
+import org.art.demo.integration.service.FileToStringPayloadTransformer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -18,14 +18,14 @@ import org.springframework.messaging.MessageHandler;
 
 import java.io.File;
 
-@Profile("annotations")
+@Profile("annotation")
 @Configuration
 @EnableIntegration
 public class AnnotationBasedIntegrationConfig {
 
     private static final String INPUT_DIR = "src/main/resources/data/input";
-    private static final String SUB_1_OUTPUT_DIR = "src/main/resources/data/output/subscriber1";
-    private static final String SUB_2_OUTPUT_DIR = "src/main/resources/data/output/subscriber2";
+    private static final String SUB_1_OUTPUT_DIR = "src/main/resources/data/output/writer1";
+    private static final String SUB_2_OUTPUT_DIR = "src/main/resources/data/output/writer2";
     private static final String FILE_PATTERN = "*.txt";
 
     @Bean
@@ -56,14 +56,14 @@ public class AnnotationBasedIntegrationConfig {
 
     @Bean
     @Transformer(inputChannel = "fileChannel1", outputChannel = "transChannel1")
-    public SimpleFilePayloadTransformer fileTransformer1() {
-        return new SimpleFilePayloadTransformer("Transformer 1");
+    public FileToStringPayloadTransformer fileTransformer1() {
+        return new FileToStringPayloadTransformer("Transformer 1");
     }
 
     @Bean
     @Transformer(inputChannel = "fileChannel2", outputChannel = "transChannel2")
-    public SimpleFilePayloadTransformer fileTransformer2() {
-        return new SimpleFilePayloadTransformer("Transformer 2");
+    public FileToStringPayloadTransformer fileTransformer2() {
+        return new FileToStringPayloadTransformer("Transformer 2");
     }
 
     @Bean
