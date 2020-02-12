@@ -1,6 +1,7 @@
 package org.art.demo.integration.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.art.demo.integration.message.CustomMessage;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -15,7 +16,7 @@ import static org.art.demo.integration.config.kafka.KafkaConstants.DEMO_TOPIC_NA
 public class MessageKafkaListener {
 
     @KafkaListener(topics = DEMO_TOPIC_NAME, groupId = CONSUMER_GROUP_ID)
-    public void listen(@Payload String message,
+    public void listen(@Payload CustomMessage message,
                        @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
         log.info("Message received: {}, partition: {}", message, partition);
     }

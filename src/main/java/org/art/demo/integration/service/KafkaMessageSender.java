@@ -2,6 +2,7 @@ package org.art.demo.integration.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.art.demo.integration.message.CustomMessage;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
@@ -15,15 +16,15 @@ import static org.art.demo.integration.config.kafka.KafkaConstants.DEMO_TOPIC_NA
 @RequiredArgsConstructor
 public class KafkaMessageSender {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, CustomMessage> kafkaTemplate;
 
-    public void sendMessage(String msg) {
-        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(DEMO_TOPIC_NAME, msg);
+    public void sendMessage(CustomMessage msg) {
+        ListenableFuture<SendResult<String, CustomMessage>> future = kafkaTemplate.send(DEMO_TOPIC_NAME, msg);
 
-        future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+        future.addCallback(new ListenableFutureCallback<SendResult<String, CustomMessage>>() {
 
             @Override
-            public void onSuccess(SendResult<String, String> result) {
+            public void onSuccess(SendResult<String, CustomMessage> result) {
                 log.info("Sent message=[{}] with offset=[{}}], topic=[{}]",
                         msg, result.getRecordMetadata().offset(), result.getRecordMetadata().topic());
             }
