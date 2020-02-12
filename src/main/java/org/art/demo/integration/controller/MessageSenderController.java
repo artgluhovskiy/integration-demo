@@ -17,8 +17,9 @@ public class MessageSenderController {
     private final KafkaMessageSender messageSender;
 
     @GetMapping("/send/{msg}")
-    public void sendMessage(@PathVariable("msg") String msg) {
+    public String sendMessage(@PathVariable("msg") String msg) {
         log.info("Sending message: {}", msg);
         messageSender.sendMessage(msg);
+        return "Message Sent: " + msg;
     }
 }
