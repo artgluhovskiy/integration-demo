@@ -15,14 +15,14 @@ import static org.art.demo.integration.library.CommonConstants.*;
 @Component
 public class BookKafkaListener {
 
-    @KafkaListener(topics = FANTASY_TOPIC_NAME, groupId = FANTASY_READERS_GROUP)
+    @KafkaListener(topics = FANTASY_TOPIC_NAME, groupId = READERS_GROUP_2)
     public void fantasyBookListener(@Payload String book,
                                     @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                                     @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         log.info("Fantasy book message received: {}, topic: {}, partition: {}", book, topic, partition);
     }
 
-    @KafkaListener(topics = HORROR_TOPIC_NAME, groupId = HORROR_READERS_GROUP)
+    @KafkaListener(topics = HORROR_TOPIC_NAME, groupId = READERS_GROUP_2)
     public void horrorBookListener(@Payload String book,
                                    @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                                    @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {

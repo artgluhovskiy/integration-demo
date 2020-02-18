@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 public class CommonConstants {
 
     public static final String FANTASY_TOPIC_NAME = "FANTASY";
-    public static final String FANTASY_READERS_GROUP = "fantasy_readers";
-
     public static final String HORROR_TOPIC_NAME = "HORROR";
-    public static final String HORROR_READERS_GROUP = "horror_readers";
+
+    public static final String READERS_GROUP_1 = "readers_1";
+    public static final String READERS_GROUP_2 = "readers_2";
 }

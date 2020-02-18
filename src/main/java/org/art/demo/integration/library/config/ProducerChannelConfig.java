@@ -28,7 +28,7 @@ public class ProducerChannelConfig {
     private String bootstrapServers;
 
     @Bean
-    public IntegrationFlow fileWritingDslFlow() {
+    public IntegrationFlow kafkaProducerFlow() {
         return IntegrationFlows.from(producerChannel())
                 .handle(kafkaMessageHandler())
                 .get();
@@ -41,9 +41,7 @@ public class ProducerChannelConfig {
 
     @Bean
     public MessageHandler kafkaMessageHandler() {
-        KafkaProducerMessageHandler<String, String> handler = new KafkaProducerMessageHandler<>(kafkaTemplate());
-//        handler.setMessageKeyExpression(new LiteralExpression("kafka-integration"));
-        return handler;
+        return new KafkaProducerMessageHandler<>(kafkaTemplate());
     }
 
     @Bean
