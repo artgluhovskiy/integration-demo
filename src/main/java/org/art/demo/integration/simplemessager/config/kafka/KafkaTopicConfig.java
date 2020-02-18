@@ -1,17 +1,19 @@
-package org.art.demo.integration.config.kafka;
+package org.art.demo.integration.simplemessager.config.kafka;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaAdmin;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.art.demo.integration.config.kafka.KafkaConstants.DEMO_TOPIC_NAME;
+import static org.art.demo.integration.simplemessager.config.kafka.KafkaConstants.DEMO_TOPIC_NAME;
 
+@Profile("messenger")
 @Configuration
 public class KafkaTopicConfig {
 

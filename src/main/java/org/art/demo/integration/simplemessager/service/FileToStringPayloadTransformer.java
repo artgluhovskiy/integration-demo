@@ -1,4 +1,4 @@
-package org.art.demo.integration.service;
+package org.art.demo.integration.simplemessager.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.transformer.AbstractPayloadTransformer;

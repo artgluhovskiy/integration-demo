@@ -1,11 +1,12 @@
-package org.art.demo.integration.config.kafka;
+package org.art.demo.integration.simplemessager.config.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.art.demo.integration.message.CustomMessage;
+import org.art.demo.integration.simplemessager.message.CustomMessage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
@@ -15,8 +16,9 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.art.demo.integration.config.kafka.KafkaConstants.CONSUMER_GROUP_ID;
+import static org.art.demo.integration.simplemessager.config.kafka.KafkaConstants.CONSUMER_GROUP_ID;
 
+@Profile("messenger")
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {

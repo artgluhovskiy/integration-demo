@@ -1,4 +1,4 @@
-package org.art.demo.integration.config.kafka;
+package org.art.demo.integration.simplemessager.config.kafka;
 
 public class KafkaConstants {
 

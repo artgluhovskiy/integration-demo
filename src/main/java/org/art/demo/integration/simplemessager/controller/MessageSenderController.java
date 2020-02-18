@@ -1,14 +1,16 @@
-package org.art.demo.integration.controller;
+package org.art.demo.integration.simplemessager.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.art.demo.integration.message.CustomMessage;
-import org.art.demo.integration.service.KafkaMessageSender;
+import org.art.demo.integration.simplemessager.message.CustomMessage;
+import org.art.demo.integration.simplemessager.service.KafkaMessageSender;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Profile("messenger")
 @Slf4j
 @RestController
 @RequestMapping("/message")

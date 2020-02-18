@@ -1,4 +1,4 @@
-package org.art.demo.integration.message;
+package org.art.demo.integration.simplemessager.message;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

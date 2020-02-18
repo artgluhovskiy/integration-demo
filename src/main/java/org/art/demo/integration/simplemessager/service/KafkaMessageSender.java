@@ -1,16 +1,18 @@
-package org.art.demo.integration.service;
+package org.art.demo.integration.simplemessager.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.art.demo.integration.message.CustomMessage;
+import org.art.demo.integration.simplemessager.message.CustomMessage;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import static org.art.demo.integration.config.kafka.KafkaConstants.DEMO_TOPIC_NAME;
+import static org.art.demo.integration.simplemessager.config.kafka.KafkaConstants.DEMO_TOPIC_NAME;
 
+@Profile("messenger")
 @Slf4j
 @Component
 @RequiredArgsConstructor
